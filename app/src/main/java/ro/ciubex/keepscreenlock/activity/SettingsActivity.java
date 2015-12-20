@@ -772,8 +772,6 @@ public class SettingsActivity extends PreferenceActivity implements
 		File logsFolder = mApplication.getLogsFolder();
 		File archive = getLogArchive(logsFolder);
 		String[] TO = {"ciubex@yahoo.com"};
-		ArrayList<String> extra_text = new ArrayList<>();
-		extra_text.add(message);
 
 		Intent emailIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
 		emailIntent.setType("text/plain");
@@ -782,7 +780,7 @@ public class SettingsActivity extends PreferenceActivity implements
 		emailIntent.putExtra(Intent.EXTRA_TEXT, message);
 		emailIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 
-		ArrayList<Uri> uris = new ArrayList<Uri>();
+		ArrayList<Uri> uris = new ArrayList<>();
 		if (archive != null && archive.exists() && archive.length() > 0) {
 			uris.add(Uri.parse("content://" + CachedFileProvider.AUTHORITY
 					+ "/" + archive.getName()));
