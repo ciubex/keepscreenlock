@@ -1,0 +1,105 @@
+<resources>
+    <string name="app_name">Keep Screen Lock</string>
+    <string name="startup_message">Due to hardware and software diversity, it is not guarantee that this application will work on your device.\nPlease use it with caution!\nThank you!</string>
+
+    <!-- Common strings -->
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="please_wait">Please wait&#8230;</string>
+    <string name="empty"/>
+
+    <!-- Strings related to Settings -->
+    <string name="settings">Settings</string>
+    <string name="general_settings">General settings</string>
+    <string name="enable_locking_screen_title">Enable keep screen locking service</string>
+    <string name="enable_locking_screen_desc">Check this option to enable the service needed to keep screen locking.</string>
+    <string name="reason_admin_privileges">Admin privileges are necessary to lock the device.</string>
+
+    <string name="lock_screen_delay_title">Lock screen delay</string>
+    <string name="lock_screen_delay_desc_msec">Wait for %.0f milliseconds to lock the screen. (1 second = 1000 milliseconds/msec, minimum is 50 msec, maximum is 3 sec)</string>
+    <string name="lock_screen_delay_desc_1sec">Wait for %.0f second to lock the screen. (1 second = 1000 milliseconds/msec, minimum is 50 msec, maximum is 3 sec)</string>
+    <string name="lock_screen_delay_desc_sec">Wait for %.2f seconds to lock the screen. (1 second = 1000 milliseconds/msec, minimum is 50 msec, maximum is 3 sec)</string>
+
+    <string name="proximity_sensor_state_title">Proximity sensor state: %s</string>
+    <string name="proximity_sensor_state_desc">Move the your hand over the proximity sensor to check the sensor state.\nCurrent recorded value is: %.2f</string>
+    <string name="proximity_sensor_state_active">Activated</string>
+    <string name="proximity_sensor_state_inactive">Inactive</string>
+
+    <string name="enable_light_sensor_listener_title">Monitor the light sensor</string>
+    <string name="enable_light_sensor_listener_desc_no_value">Use the light sensor value to verify if the phone is on the pocket.</string>
+    <string name="enable_light_sensor_listener_desc">Use the light sensor value to verify if the phone is on the pocket.\nCurrent light sensor value is: %.2f</string>
+
+    <string name="limit_light_sensor_value_title">Light sensor sensitivity</string>
+    <string name="limit_light_sensor_value_desc">Consider to be inside a pocket if the light sensor values are between 0 and %.2f.\nNote, sometime could be confused with a dark environment too.</string>
+
+    <string name="enable_phone_listener_title">Check to monitor the calls too.</string>
+    <string name="enable_phone_listener_desc">By monitoring the calls the screen can be locked too. This can be usefully when are used bluetooth devices to make and answer to calls.</string>
+
+    <!-- Notifications -->
+    <string name="notification_settings">Notification settings</string>
+    <string name="notification_text">Touch to Lock your Screen</string>
+    <string name="notification_enabled_title">Enable notification</string>
+    <string name="notification_enabled_desc">Check the option to enable the screen lock notification when the screen is locked, this will allow the screen to be turned off when the screen is locked (prior unlocking the screen).</string>
+    <string name="notification_toggle_title">Hide notification</string>
+    <string name="notification_toggle_desc">Touch this option to hide the notification if the notification remain on the status bar.</string>
+
+    <!-- Other settings -->
+    <string name="other_settings">Other settings</string>
+
+    <!-- screen lock shortcut -->
+    <string name="screen_lock_shortcut">Screen lock shortcut</string>
+    <string name="screen_lock_shortcut_name">Screen lock</string>
+    <string name="create_screen_lock_shortcut">Create screen lock shortcut</string>
+    <string name="create_screen_lock_shortcut_desc">Create on your home screen a screen lock shortcut.</string>
+    <string name="remove_screen_lock_shortcut">Remove screen lock shortcut</string>
+    <string name="remove_screen_lock_shortcut_desc">Remove from your home screen the screen lock shortcut</string>
+
+    <!-- Permission sections -->
+    <string name="request_permissions_title">Request required application permission.</string>
+    <string name="request_permissions_desc">Touch this option to request for required application permissions: PROCESS OUTGOING CALLS and READ PHONE STATE (used to detect when an outgoing and incoming call are made), RECEIVE BOOT COMPLETED (used to detect when booting process is finished).</string>
+    <string name="request_permissions_confirmation">Do you want to request for required application permissions?</string>
+    <string name="request_permissions_ok">All required permissions are granted!</string>
+
+    <!-- Lock screen counter -->
+    <string name="locked_screen_count_title">Locked screen counter: %d</string>
+    <string name="locked_screen_count_desc">This counter show you how many times your device was locked back by this application. Touch this option to see locked history and to reset the locked screen counter.</string>
+    <string name="locked_screen_count_confirmation">Do you want to reset the locked screen counter?</string>
+
+    <string name="locked_screen_log_format">MM/dd/yyyy - h:mm:ss aaa</string>
+    <string name="locked_screen_log_format_title">Log date time format</string>
+    <string name="locked_screen_log_format_desc">Define date time for list of screen lock history events.</string>
+    <string name="locked_screen_log_title">Screen lock history</string>
+    <string name="locked_screen_log_clear">Clear list</string>
+
+    <!-- Device admin messages -->
+    <string name="device_admin_enabled">Enabled admin privileges for Keep Screen Lock.</string>
+    <string name="device_admin_disable">Disabling Keep Screen Lock admin privileges.</string>
+    <string name="device_admin_disabled">Disabled admin privileges for Keep Screen Lock.</string>
+
+    <!-- About -->
+    <string name="about_section">About</string>
+    <string name="build_version_title">Build version</string>
+    <string name="build_version_desc">1</string>
+    <string name="send_debug_title">Send debugging logs</string>
+    <string name="send_debug_desc">Send an e-mail with debugging files</string>
+    <string name="send_debug_confirmation">Do you want to send a debugging report?\nYour default e-mail application will send an e-mail with two files attached, please fill a short description of your issues if is necessary.\nThank you!</string>
+    <string name="send_debug_email_title">Debugging logs for Keep Screen Lock</string>
+    <string name="obtain_logs">Generate log file for report&#8230;</string>
+    <string name="report_subject">Report for Keep Screen Lock</string>
+    <string name="report_body">Description: </string>
+    <string name="send_report">Send report&#8230;</string>
+    <string name="license_title">Open source licenses</string>
+    <string name="license_desc">License details for open source software</string>
+    <string name="donate_title">Donate</string>
+    <string name="donate_desc">Please make a donation if you appreciate this application.</string>
+    <string name="donate_confirmation">If you appreciate this application, please do a donation buying Keep Screen Lock PRO!\nPressing YES button, you will be sent to Keep Screen Lock PRO from Google Play Store.\nThank you for using this application!</string>
+    <string name="donate_url"><Data><![CDATA[https://play.google.com/store/apps/details?id=ro.ciubex.keepscreenlockpro]]></Data></string>
+    <string name="thank_you_title">Thank you for donation!</string>
+    <string name="thank_you_desc">Thank you for the appreciation of my work, buying pro application.</string>
+
+    <string name="app_description">I made this application to lock device screen to avoid launching accidentally applications or made wrong calls.\nUnfortunately, I cannot guarantee its success, I still have issues too, but using this application I reduced the numbers of times when the phone was wrong activated into the pocket.\n\nBe very carefully and do experiments when you modify any of application options!</string>
+
+</resources>
