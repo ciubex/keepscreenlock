@@ -779,7 +779,7 @@ public class SettingsActivity extends PreferenceActivity implements
 		emailIntent.setType("text/plain");
 		emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
 		emailIntent.putExtra(Intent.EXTRA_SUBJECT, emailTitle);
-		emailIntent.putExtra(Intent.EXTRA_TEXT, extra_text);
+		emailIntent.putExtra(Intent.EXTRA_TEXT, message);
 		emailIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 
 		ArrayList<Uri> uris = new ArrayList<Uri>();
