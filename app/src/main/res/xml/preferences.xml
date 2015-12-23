@@ -51,6 +51,12 @@
             android:key="notificationEnabled"
             android:summary="@string/notification_enabled_desc"
             android:title="@string/notification_enabled_title"/>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="notificationEnabled"
+            android:key="notificationAlwaysDismissible"
+            android:summary="@string/notification_dismiss_always_desc"
+            android:title="@string/notification_dismiss_always_title"/>
         <Preference
             android:key="toggleNotification"
             android:persistent="false"

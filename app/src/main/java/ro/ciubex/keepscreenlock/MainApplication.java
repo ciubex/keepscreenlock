@@ -107,6 +107,7 @@ public class MainApplication extends Application {
 	private static final String KEY_LAST_LIGHT_VALUE = "lastLightValue";
 	private static final String KEY_PHONE_ACTIVE = "phoneActive";
 	public static final String KEY_NOTIFICATION_ENABLED = "notificationEnabled";
+	private static final String KEY_NOTIFICATION_ALWAYS_DISMISSIBLE = "notificationAlwaysDismissible";
 	public static final String KEY_TOGGLE_NOTIFICATION = "toggleNotification";
 	private static final String KEY_SCREEN_LOCK_SHORTCUT_CREATED = "screenLockShortcutCreated";
 
@@ -530,7 +531,7 @@ public class MainApplication extends Application {
 	/**
 	 * Save current screen locked state, true if the screen is locked, otherwise false.
 	 *
-	 * @param flag True or false state of the screen lock.
+	 * @param flag         True or false state of the screen lock.
 	 * @param allowDismiss Flag used to create a dismissible notification.
 	 */
 	public void setScreenLockedFlag(boolean flag, boolean allowDismiss) {
@@ -906,6 +907,7 @@ public class MainApplication extends Application {
 
 	/**
 	 * Get formatted date time.
+	 *
 	 * @param dateTimeTimestamp Date time timestamp.
 	 * @return Formatted date time.
 	 */
@@ -1006,6 +1008,15 @@ public class MainApplication extends Application {
 	}
 
 	/**
+	 * Check if the notification should be always dismissible.
+	 *
+	 * @return True, if the notification should be dismissible always.
+	 */
+	public boolean isNotificationAlwaysDismissible() {
+		return mSharedPreferences.getBoolean(KEY_NOTIFICATION_ALWAYS_DISMISSIBLE, false);
+	}
+
+	/**
 	 * Get the notification manager.
 	 *
 	 * @return The notification manager.
@@ -1070,7 +1081,7 @@ public class MainApplication extends Application {
 
 			mNotification = notifBuilder.build();
 		}
-		if (allowDismiss) {
+		if (isNotificationAlwaysDismissible() || allowDismiss) {
 			mNotification.flags &= ~Notification.FLAG_NO_CLEAR;
 		} else {
 			mNotification.flags |= Notification.FLAG_NO_CLEAR;
@@ -1116,6 +1127,7 @@ public class MainApplication extends Application {
 
 	/**
 	 * Check if the permissions were asked.
+	 *
 	 * @return True if the permissions were asked.
 	 */
 	public boolean havePermissionsAsked() {
@@ -1241,6 +1253,7 @@ public class MainApplication extends Application {
 
 	/**
 	 * Get an array with all required permissions.
+	 *
 	 * @return Array with permissions to be requested.
 	 */
 	public String[] getAllRequiredPermissions() {
@@ -1258,7 +1271,8 @@ public class MainApplication extends Application {
 
 	/**
 	 * Put on the permissions all required permissions which is missing and was not asked.
-	 * @param permissions List of permissions to be requested.
+	 *
+	 * @param permissions         List of permissions to be requested.
 	 * @param requiredPermissions List with all required permissions to be checked.
 	 */
 	private void buildRequiredPermissions(List<String> permissions, List<String> requiredPermissions, boolean force) {

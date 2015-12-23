@@ -106,7 +106,6 @@ public class SettingsActivity extends PreferenceActivity implements
 	private static final int ID_CONFIRMATION_DEBUG_REPORT = 2;
 	private static final int ID_CONFIRMATION_SHOW_KEEP_LOGS = 3;
 	private static final int ID_CONFIRMATION_REQUEST_PERMISSIONS = 4;
-	private static final int ID_ALERT_NO_MESSAGE = -1;
 
 	private static final int BUFFER = 1024;
 	private ProximityListener mProximityListener;
@@ -562,6 +561,14 @@ public class SettingsActivity extends PreferenceActivity implements
 					ID_CONFIRMATION_SHOW_KEEP_LOGS,
 					true,
 					getLockHistoryListAdapter());
+		} else {
+			showCustomAlertDialog(R.string.locked_screen_log_title,
+					R.string.locked_screen_count_0,
+					false,
+					android.R.drawable.ic_dialog_alert,
+					ID_CONFIRMATION_ALERT,
+					true,
+					null);
 		}
 	}
 
@@ -661,7 +668,7 @@ public class SettingsActivity extends PreferenceActivity implements
 		alertDialog.setTitle(titleId);
 		if (adapter != null) {
 			alertDialog.setAdapter(adapter, null);
-		} else if (messageId != ID_ALERT_NO_MESSAGE) {
+		} else {
 			if (messageContainLink) {
 				String message = MainApplication.getAppContext().getString(messageId);
 				ScrollView scrollView = new ScrollView(this);
