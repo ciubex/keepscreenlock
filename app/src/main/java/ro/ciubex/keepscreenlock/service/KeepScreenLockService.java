@@ -297,10 +297,10 @@ public class KeepScreenLockService extends Service {
 	private boolean isScreenOff() {
 		boolean result;
 		int apiLevel = Build.VERSION.SDK_INT;
-		if (apiLevel >= Build.VERSION_CODES.KITKAT_WATCH) {
-			result = isScreenOffNewAPI20();
-		} else { // old API
+		if (apiLevel < Build.VERSION_CODES.KITKAT_WATCH) { // old API
 			result = isScreenOffOldAPI();
+		} else { // new API
+			result = isScreenOffNewAPI20();
 		}
 		return result;
 	}
@@ -312,7 +312,7 @@ public class KeepScreenLockService extends Service {
 	 */
 	private boolean isScreenOffOldAPI() {
 		PowerManager powerManager = (PowerManager)mApplication.getSystemService(POWER_SERVICE);
-		return !powerManager.isInteractive();
+		return !powerManager.isScreenOn();
 	}
 
 	/**
