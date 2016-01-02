@@ -34,6 +34,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -59,6 +60,8 @@ import java.util.Map;
 import java.util.TimeZone;
 
 import ro.ciubex.keepscreenlock.receiver.AdminPermissionReceiver;
+import ro.ciubex.keepscreenlock.receiver.LightSensorListener;
+import ro.ciubex.keepscreenlock.receiver.ProximityListener;
 import ro.ciubex.keepscreenlock.service.KeepScreenLockService;
 import ro.ciubex.keepscreenlock.receiver.ScreenLockReceiver;
 import ro.ciubex.keepscreenlock.receiver.ScreenLockShortcutUpdateListener;
@@ -106,12 +109,17 @@ public class MainApplication extends Application {
 	private static final String KEY_LAST_PROXIMITY_VALUE = "lastProximityValue";
 	private static final String KEY_LAST_LIGHT_VALUE = "lastLightValue";
 	private static final String KEY_PHONE_ACTIVE = "phoneActive";
+	private static final String KEY_ENABLE_WHEN_HEADSET = "enableWhenHeadset";
 	public static final String KEY_NOTIFICATION_ENABLED = "notificationEnabled";
 	private static final String KEY_NOTIFICATION_ALWAYS_DISMISSIBLE = "notificationAlwaysDismissible";
 	public static final String KEY_TOGGLE_NOTIFICATION = "toggleNotification";
 	private static final String KEY_SCREEN_LOCK_SHORTCUT_CREATED = "screenLockShortcutCreated";
 
 	private SensorManager mSensorManager;
+	private AudioManager mAudioManager;
+
+	private ProximityListener mProximityListener;
+	private LightSensorListener mLightSensorListener;
 
 	private Messenger mService = null;
 	private boolean mBound;
@@ -135,6 +143,7 @@ public class MainApplication extends Application {
 	private static final String KEY_HAVE_PERMISSIONS_ASKED = "havePermissionsAsked";
 	public static final String PERMISSION_FOR_OUTGOING_CALLS = "android.permission.PROCESS_OUTGOING_CALLS";
 	public static final String PERMISSION_FOR_READ_PHONE_STATE = "android.permission.READ_PHONE_STATE";
+	public static final String PERMISSION_FOR_MODIFY_AUDIO_SETTINGS = "android.permission.MODIFY_AUDIO_SETTINGS";
 	public static final String PERMISSION_FOR_RECEIVE_BOOT_COMPLETED = "android.permission.RECEIVE_BOOT_COMPLETED";
 	public static final String PERMISSION_FOR_INSTALL_SHORTCUT = "com.android.launcher.permission.INSTALL_SHORTCUT";
 	public static final String PERMISSION_FOR_UNINSTALL_SHORTCUT = "com.android.launcher.permission.UNINSTALL_SHORTCUT";
@@ -143,6 +152,7 @@ public class MainApplication extends Application {
 	public static final List<String> FUNCTIONAL_PERMISSIONS = Arrays.asList(
 			PERMISSION_FOR_OUTGOING_CALLS,
 			PERMISSION_FOR_READ_PHONE_STATE,
+			PERMISSION_FOR_MODIFY_AUDIO_SETTINGS,
 			PERMISSION_FOR_RECEIVE_BOOT_COMPLETED
 	);
 
@@ -186,7 +196,8 @@ public class MainApplication extends Application {
 		mKeyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
 		mComponentName = new ComponentName(this, AdminPermissionReceiver.class);
 		mSdkInt = android.os.Build.VERSION.SDK_INT;
-		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 		initLocale();
 		checkKeepScreenLockReceiver();
 	}
@@ -588,6 +599,26 @@ public class MainApplication extends Application {
 	}
 
 	/**
+	 * Check if the enable when headset option is enabled.
+	 *
+	 * @return True if the option is enabled.
+	 */
+	public boolean isEnableWhenHeadset() {
+		return mSharedPreferences.getBoolean(KEY_ENABLE_WHEN_HEADSET, false);
+	}
+
+	/**
+	 * Check if an headset or a bluetooth device is connected.
+	 *
+	 * @return True if an headset or a bluetooth device is connected.
+	 */
+	public boolean isHeadsetConnected() {
+		return mAudioManager.isWiredHeadsetOn() ||
+				mAudioManager.isBluetoothA2dpOn() ||
+				mAudioManager.isBluetoothScoOn();
+	}
+
+	/**
 	 * Store a string value on the shared preferences.
 	 *
 	 * @param key   The shared preference key.
@@ -786,6 +817,66 @@ public class MainApplication extends Application {
 			}
 		} catch (Exception e) {
 			logE(TAG, "unregisterKeepScreenLockService: " + e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * Register all listeners.
+	 */
+	public void registerListeners() {
+		registerProximityListener();
+		registerLightSensorListener();
+	}
+
+	/**
+	 * Unregister all listeners.
+	 */
+	public void unregisterListeners() {
+		unregisterProximityListener();
+		unregisterLightSensorListener();
+	}
+
+	/**
+	 * Register the proximity listener used to handle the proximity events.
+	 */
+	private void registerProximityListener() {
+		if (mProximityListener == null) {
+			this.setLastProximityValue(MainApplication.PROXIMITY_FAR_VALUE);
+			mProximityListener = new ProximityListener(this);
+			mProximityListener.registerProximityListener();
+		}
+	}
+
+	/**
+	 * Register the light sensor listener used to handle the light sensor events.
+	 */
+	private void registerLightSensorListener() {
+		if (mLightSensorListener == null) {
+			if (isEnableLightSensorListener()) {
+				setLastLightValue(MainApplication.LIGHT_VALUE_INVALID);
+				mLightSensorListener = new LightSensorListener(this);
+				mLightSensorListener.registerLightSensorListener();
+			}
+		}
+	}
+
+	/**
+	 * Unregister the proximity listener.
+	 */
+	private void unregisterProximityListener() {
+		if (mProximityListener != null) {
+			mProximityListener.unregisterProximityListener();
+			mProximityListener = null;
+		}
+	}
+
+	/**
+	 * Unregister the light sensor listener.
+	 */
+	private void unregisterLightSensorListener() {
+		if (mLightSensorListener != null) {
+			mLightSensorListener.unregisterLightSensorListener();
+			mLightSensorListener = null;
 		}
 	}
 

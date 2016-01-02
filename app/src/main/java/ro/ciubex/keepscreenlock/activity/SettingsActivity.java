@@ -737,7 +737,7 @@ public class SettingsActivity extends PreferenceActivity implements
 						true,
 						null);
 			} else {
-				requestForPermissions(mApplication.getNotGrantedPermissions());
+				requestForPermissions(permissions);
 			}
 		}
 	}

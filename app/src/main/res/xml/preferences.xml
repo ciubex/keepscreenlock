@@ -43,6 +43,12 @@
             android:key="enablePhoneListener"
             android:summary="@string/enable_phone_listener_desc"
             android:title="@string/enable_phone_listener_title"/>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="enablePhoneListener"
+            android:key="enableWhenHeadset"
+            android:summary="@string/check_only_when_headset_desc"
+            android:title="@string/check_only_when_headset_title"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/notification_settings">
         <CheckBoxPreference

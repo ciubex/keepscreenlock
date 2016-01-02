@@ -241,7 +241,7 @@ public class KeepScreenLockService extends Service {
 	private void unregisterScreenActionsReceiver() {
 		mApplication.logD(TAG, "Unregister the ScreenActionsReceiver.");
 		if (mScreenActionsReceiver != null) {
-			mScreenActionsReceiver.unregisterListeners();
+			mApplication.unregisterListeners();
 			unregisterBroadcastReceiver(mScreenActionsReceiver);
 		}
 		mScreenActionsReceiver = null;

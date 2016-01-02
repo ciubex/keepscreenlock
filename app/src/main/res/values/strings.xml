@@ -37,6 +37,8 @@
 
     <string name="enable_phone_listener_title">Check to monitor the calls too.</string>
     <string name="enable_phone_listener_desc">By monitoring the calls the screen can be locked too. This can be usefully when are used bluetooth devices to make and answer to calls.</string>
+    <string name="check_only_when_headset_title">Only for headphone or bluetooth</string>
+    <string name="check_only_when_headset_desc">Enable locking back service only when an headphone or a bluetooth is connected to the device.</string>
 
     <!-- Notifications -->
     <string name="notification_settings">Notification settings</string>
@@ -61,7 +63,7 @@
 
     <!-- Permission sections -->
     <string name="request_permissions_title">Request required application permission.</string>
-    <string name="request_permissions_desc">Touch this option to request for required application permissions: PROCESS OUTGOING CALLS and READ PHONE STATE (used to detect when an outgoing and incoming call are made), RECEIVE BOOT COMPLETED (used to detect when booting process is finished).</string>
+    <string name="request_permissions_desc">Touch this option to request for required application permissions: PROCESS OUTGOING CALLS and READ PHONE STATE (used to detect when an outgoing and incoming call are made), MODIFY AUDIO SETTINGS is used to check if an headset or a bluetooth is connected, RECEIVE BOOT COMPLETED (used to detect when booting process is finished).</string>
     <string name="request_permissions_confirmation">Do you want to request for required application permissions?</string>
     <string name="request_permissions_ok">All required permissions are granted!</string>
 

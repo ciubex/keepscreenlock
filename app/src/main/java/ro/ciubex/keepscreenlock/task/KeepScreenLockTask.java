@@ -29,7 +29,7 @@ import ro.ciubex.keepscreenlock.MainApplication;
  * @author Claudiu Ciobotariu
  *
  */
-public class KeepScreenLockTask extends AsyncTask<Void, Void, Integer> {
+public class KeepScreenLockTask extends AsyncTask<Void, Void, Void> {
 	private static final String TAG = KeepScreenLockTask.class.getName();
 	private MainApplication mApplication;
 	private long mDelayMilliseconds;
@@ -53,7 +53,7 @@ public class KeepScreenLockTask extends AsyncTask<Void, Void, Integer> {
 	 * @return Is returned a void value.
 	 */
 	@Override
-	protected Integer doInBackground(Void... params) {
+	protected Void doInBackground(Void... params) {
 		mDelayMilliseconds = mApplication.getLockScreenDelay();
 		while(MainApplication.isScreenLockRequested) {
 			MainApplication.isScreenLockRequested = false;
@@ -61,7 +61,7 @@ public class KeepScreenLockTask extends AsyncTask<Void, Void, Integer> {
 			checkScreenLockConditions();
 		}
 		MainApplication.isKeepScreenLockTaskRunning = false;
-		return 0;
+		return null;
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class KeepScreenLockTask extends AsyncTask<Void, Void, Integer> {
 	 *              doInBackground(Params...).
 	 */
 	@Override
-	protected void onPostExecute(Integer result) {
+	protected void onPostExecute(Void result) {
 		super.onPostExecute(result);
 	}
 }
