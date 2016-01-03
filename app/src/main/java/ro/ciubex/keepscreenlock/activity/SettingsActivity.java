@@ -412,6 +412,7 @@ public class SettingsActivity extends PreferenceActivity implements
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 										  String key) {
+		boolean doPrepareSummaries = true;
 		if (MainApplication.KEY_ENABLE_KEEP_SCREEN_LOCK_SERVICE.equals(key)) {
 			mApplication.checkKeepScreenLockReceiver();
 			mApplication.enableScreenActionsReceiver(mApplication.isEnabledKeepScreenLockService());
@@ -427,8 +428,24 @@ public class SettingsActivity extends PreferenceActivity implements
 		} else if (MainApplication.KEY_SCREEN_LOCK_LOGS_DATETIMEFORMAT.equals(key)) {
 			mApplication.checkScreenLockLogsDateTimeFormat();
 			mHistoryEventsItems = null;
+		} else if (MainApplication.KEY_LANGUAGE_CODE.equals(key)) {
+			doPrepareSummaries = false;
+			restartActivity();
 		}
-		prepareSummaries();
+		if (doPrepareSummaries) {
+			prepareSummaries();
+		}
+	}
+
+	/**
+	 * Restart this activity.
+	 */
+	private void restartActivity() {
+		mApplication.initLocale();
+		Intent i = MainApplication.getAppContext().getPackageManager()
+				.getLaunchIntentForPackage(MainApplication.getAppContext().getPackageName());
+		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(i);
 	}
 
 	/**

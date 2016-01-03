@@ -3,6 +3,13 @@
                   xmlns:ciubex="http://schemas.android.com/apk/res/ro.ciubex.keepscreenlock">
 
     <PreferenceCategory android:title="@string/general_settings">
+        <ListPreference
+            android:defaultValue="en"
+            android:entries="@array/language_labels"
+            android:entryValues="@array/language_values"
+            android:key="languageCode"
+            android:summary="@string/change_language_desc"
+            android:title="@string/change_language_title"/>
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="enableKeepScreenLockService"

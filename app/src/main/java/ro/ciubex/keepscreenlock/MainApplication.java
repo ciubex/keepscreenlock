@@ -67,6 +67,7 @@ import ro.ciubex.keepscreenlock.receiver.ScreenLockReceiver;
 import ro.ciubex.keepscreenlock.receiver.ScreenLockShortcutUpdateListener;
 import ro.ciubex.keepscreenlock.task.KeepScreenLockTask;
 import ro.ciubex.keepscreenlock.task.LogThread;
+import ro.ciubex.keepscreenlock.util.Utilities;
 
 /**
  * This is the application class for the Keep Screen Lock application.
@@ -140,6 +141,7 @@ public class MainApplication extends Application {
 
 	private ScreenLockShortcutUpdateListener mShortcutUpdateListener;
 
+	public static final String KEY_LANGUAGE_CODE = "languageCode";
 	private static final String KEY_HAVE_PERMISSIONS_ASKED = "havePermissionsAsked";
 	public static final String PERMISSION_FOR_OUTGOING_CALLS = "android.permission.PROCESS_OUTGOING_CALLS";
 	public static final String PERMISSION_FOR_READ_PHONE_STATE = "android.permission.READ_PHONE_STATE";
@@ -212,10 +214,43 @@ public class MainApplication extends Application {
 	}
 
 	/**
-	 * Initialize the default locale.
+	 * Initialize the application locale.
 	 */
-	private void initLocale() {
-		mLocale = Locale.getDefault();
+	public void initLocale() {
+		mLocale = getLocaleSharedPreferences();
+		Locale.setDefault(mLocale);
+		android.content.res.Configuration config = new android.content.res.Configuration();
+		config.locale = mLocale;
+		MainApplication.mContext.getResources().updateConfiguration(config, MainApplication.mContext.getResources().getDisplayMetrics());
+	}
+
+	/**
+	 * Get the locale from the shared preference or device default locale.
+	 *
+	 * @return The locale which should be used on the application.
+	 */
+	private Locale getLocaleSharedPreferences() {
+		Locale locale = Locale.getDefault();
+		String language = mSharedPreferences.getString(KEY_LANGUAGE_CODE, "en");
+		if (!Utilities.isEmpty(language)) {
+			String[] arr = language.split("_");
+			try {
+				switch (arr.length) {
+					case 1:
+						locale = new Locale(arr[0]);
+						break;
+					case 2:
+						locale = new Locale(arr[0], arr[1]);
+						break;
+					case 3:
+						locale = new Locale(arr[0], arr[1], arr[2]);
+						break;
+				}
+			} catch (Exception e) {
+				Log.e(TAG, "getLocaleSharedPreferences: " + language, e);
+			}
+		}
+		return locale;
 	}
 
 	/**

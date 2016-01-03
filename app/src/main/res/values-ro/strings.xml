@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Keep Screen Lock</string>
+    <string name="build_version_desc">1</string>
+    <string name="about_section">Despre</string>
+    <string name="app_description">Am realizat aceasta aplicatie pentru a evita lansarea accidentala de aplicatii si realizarea de apeluri cat timp telefonul este blocat, spre exemplu in buzunare.\nDin pacate nu pot garanta ca aplicatia realizeaza aceasta cu succes, insa folosind aceasta aplicatie am redus numarul cazurilor cand telefonul a fost activat accidental in buzunar.\n\nFi foarte atent la ce setari faci si experimenteaza-le pe cat posibil pentru a ajunge la o varianta optima!</string>
+    <string name="build_version_title">Versiunea</string>
+    <string name="cancel">Renunta</string>
+    <string name="change_language_desc">Aplicatia s-ar putea sa se restarteze pentru a se actva limba selectata.</string>
+    <string name="change_language_title">Language: Limba folosita in aplicatie</string>
+    <string-array name="language_labels">
+        <item>Engleza</item>
+        <item>Romana</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>en</item>
+        <item>ro</item>
+    </string-array>
+    <string name="check_only_when_headset_desc">Activati blocarea dispozitivului doar cand sunt prezente dispozitive maini libere (casti sau bluetooth).</string>
+    <string name="check_only_when_headset_title">Numai pentru casti sau Bluetooth</string>
+    <string name="close">Inchide</string>
+    <string name="create_screen_lock_shortcut">Create o comanda rapida de blocare a ecranului.</string>
+    <string name="create_screen_lock_shortcut_desc">Creaza in fereastra principala a dispozitivului dumneavoastra o comanda rapida de blocare a ecranului (shortcut).</string>
+    <string name="device_admin_disable">Sunt dezactivate privilegiile de administrator pentru aplicatia Keep Screen Lock.</string>
+    <string name="device_admin_disabled">Au fost dezactivate privilegiile de administrator pentru aplicatia Keep Screen Lock.</string>
+    <string name="device_admin_enabled">Au fost activate privilegiile de administrator pentru aplicatia Keep Screen Lock.</string>
+    <string name="donate_confirmation">Daca apreciati aceasta aplicatie si munca depusa pentru realizarea ei, va rog sa donati o suma de bani prin instalarea aplicatiei Keep Screen Lock PRO!\nPrin apasarea butonului DA, veti fi redirectionat spre pagina din Google Play Store a aplicatiei Keep Screen Lock PRO.\nMultumesc pentru utilizarea acestei aplicatii!</string>
+    <string name="donate_desc">Daca apreciati aceasta aplicatie, va rog sa efectuati o donatie.</string>
+    <string name="donate_title">Donatie</string>
+    <string name="enable_light_sensor_listener_desc">Utilizeaza valorile raportate de senzorul de lumina pentru a verifica daca dispozitivul se afla in buzunar.\nValoarea curenta raportata de sensorul de lumina este: %.2f</string>
+    <string name="enable_light_sensor_listener_desc_no_value">Utililzeaza valorile senzorului de lumina pentru a determina daca telefonul e in buzunar.</string>
+    <string name="enable_light_sensor_listener_title">Monitorizeaza senzorul de lumina</string>
+    <string name="enable_locking_screen_desc">Selecteaza aceasta optiune pentru a activa serviciul utilizat pentru pastrarea ecranului blocat.</string>
+    <string name="enable_locking_screen_title">Activeaza serviciul pentru pastrarea ecranului blocat.</string>
+    <string name="enable_phone_listener_desc">Ecranul poate fi blocat prin monitorizarea apelurilor telefonice. Aceasta functie poate fi de ajutor cand sunt folosite dispozitve tip "maini libere" pentru realizarea si raspunderea la apelurile telefonice.</string>
+    <string name="enable_phone_listener_title">Monitorizeaza apelurile telefonice</string>
+    <string name="general_settings">Setari generale</string>
+    <string name="license_desc">Detalii legate de licentierea Open Source</string>
+    <string name="license_title">Licenta Open Source</string>
+    <string name="limit_light_sensor_value_desc">Se poate considera ca telefonul este intr-un buzunar daca valorile senzorului de lumina este intre 0 si %.2f.\nDe retinut, uneori aceste valori se pot inregistra intr-un mediu fara lumina, precum noaptea.</string>
+    <string name="limit_light_sensor_value_title">Sensibilitatea senzorului de lumina</string>
+    <string name="lock_screen_delay_desc_1sec">Asteapta %.0f secunda pentru a bloca ecranul. (1 secunda = 1000 milisecunde/msec, valoare minima 50 msec, valoare maxima 3 sec)</string>
+    <string name="lock_screen_delay_desc_msec">Asteapta %.0f milisecunde pentru a bloca ecranul. (1 secunda = 1000 milisecunde/msec, valoare minima 50 msec, valoare maxima 3 sec)</string>
+    <string name="lock_screen_delay_desc_sec">Asteapta %.2f secunde pentru a bloca ecranul. (1 secunda = 1000 milisecunde/msec, valoare minima 50 msec, valoare maxima 3 sec)</string>
+    <string name="lock_screen_delay_title">Intarzire pentru blocarea ecranului</string>
+    <string name="locked_screen_count_0">Nu a fost inregistrat nici un eveniment.</string>
+    <string name="locked_screen_count_desc">Acest contor indica de cate ori a fost ecranul dispozitivului dumneavoastra blocat automat de aceasta aplicatie. Atinge aceasta optiune pentru a vedea istoricul momentelor in care a fost blocat automat ecranul si pentru resetarea contorului.</string>
+    <string name="locked_screen_log_clear">Reseteaza</string>
+    <string name="locked_screen_log_format">dd/MM/yyyy - hh:mm:ss</string>
+    <string name="locked_screen_count_title">Contor blocari ecran: %d</string>
+    <string name="locked_screen_log_format_desc">Defineste formatul pentru data si ora afisata in lista contorului de ecrane blocate.</string>
+    <string name="locked_screen_log_format_title">Formatul pentru data si timp</string>
+    <string name="locked_screen_log_title">Istoricul ecranelor blocate</string>
+    <string name="no">Nu</string>
+    <string name="notification_dismiss_always_desc">Seteaza ca notificarile sa fie intotdeauna indepartabile, in mod normal acestea nu sunt indepartabile cat timp ecranul e blocat, dar sunt indepartabile in timpul apelurilor telefonice.</string>
+    <string name="notification_dismiss_always_title">Perminte notificari indepartabile</string>
+    <string name="notification_enabled_desc">Activeaza aceasta optiune pentru a afisa o notificare pe durata cat timp ecranul este blocat. Aceasta notificare este folositoare pentru blocarea manuala a ecranului in timpul cat acesta este activ dar inca nu s-a trecut de modul de securitate.</string>
+    <string name="notification_enabled_title">Activeaza notificarile</string>
+    <string name="notification_settings">Setari legate de notificari</string>
+    <string name="notification_text">Atinge pentru blocarea ecranului</string>
+    <string name="notification_toggle_desc">Atinge aceasta optiune pentru a ascunde notificarile ramase active in bara de stari.</string>
+    <string name="notification_toggle_title">Ascunde notificarile</string>
+    <string name="obtain_logs">Se genereaza fisierul pentru loguri&#8230;</string>
+    <string name="ok">OK</string>
+    <string name="other_settings">Alte setari</string>
+    <string name="please_wait">Te rog asteapta&#8230;</string>
+    <string name="proximity_sensor_state_active">Activat</string>
+    <string name="proximity_sensor_state_inactive">Inactiv</string>
+    <string name="proximity_sensor_state_desc">Misca mana peste senzorul de proximitate pentru a verifica activare si dezactivarea acestuia.\nValoarea curenta a senzorului este: %.2f</string>
+    <string name="proximity_sensor_state_title">Starea senzorului de proximitate: %s</string>
+    <string name="reason_admin_privileges">Privilegiile de administrare sunt necesare pentru blocarea ecranului dispozitivului.</string>
+    <string name="remove_screen_lock_shortcut">Sterge comanda rapida de blocare a ecranului</string>
+    <string name="remove_screen_lock_shortcut_desc">Sterge de pe ecranul principal comanda rapida de blocare a ecranului (shortcut remove)</string>
+    <string name="report_body">Descriere:</string>
+    <string name="report_subject">Raport pentru Keep Screen Lock</string>
+    <string name="request_permissions_confirmation">Doriti solicitarea permisiunilor necesare functionarii aplicatiei?</string>
+    <string name="request_permissions_desc">Atingeti aceasta optiune pentru solicitarea permisiunilor necesare rularii aplicatiei: PROCESS OUTGOING CALLS si READ PHONE STATE (utilizate pentru detectarea apeurilor telefonice), MODIFY AUDIO SETTINGS (utilizate pentru detectarea folosirii dispozitivelor "maini libere"), RECEIVE BOOT COMPLETED (utilizat pentru determinarea finalizarii procesului de boot-are).</string>
+    <string name="request_permissions_ok">Toate permisiunile sunt acordate!</string>
+    <string name="request_permissions_title">Solicita acordarea permisiunilor necesare aplicatiei.</string>
+    <string name="screen_lock_shortcut">Comanda blocarea ecranului</string>
+    <string name="screen_lock_shortcut_name">Blocheaza ecranul</string>
+    <string name="send_debug_confirmation">Doresti trimitearea unui mesaj de raport?\nPentru trimiterea acestui raport se va folosi aplicatia standard pentru trimiterea de e-mail-uri, va rog sa completati o descriere cu problemele avute cu aceasta aplicatie.\nMultumesc!</string>
+    <string name="send_debug_desc">Trimite un e-mail de raport de depanare.</string>
+    <string name="send_debug_email_title">Debugging logs for Keep Screen Lock</string>
+    <string name="send_debug_title">Trimite raportul de depanare</string>
+    <string name="send_report">Trimirerea raportului&#8230;</string>
+    <string name="settings">Setari</string>
+    <string name="startup_message">Din cauza diversitatii dispozitvelor si a software-ului, nu este garantata functionarea acestei aplicatii pe dispozitivul dumneavoastra.\nVa rog sa-l utilizati cu precautie!\nMultumesc!</string>
+    <string name="thank_you_desc">Multumesc pentru aprecierea muncii mele prin cumpararea aplicatiei PRO.</string>
+    <string name="thank_you_title">Multumesc pentru donatia facuta!</string>
+    <string name="yes">Da</string>
+</resources>

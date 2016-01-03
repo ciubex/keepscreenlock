@@ -9,11 +9,24 @@
     <string name="cancel">Cancel</string>
     <string name="close">Close</string>
     <string name="please_wait">Please wait&#8230;</string>
-    <string name="empty"/>
+    <string name="empty" translatable="false"/>
 
     <!-- Strings related to Settings -->
     <string name="settings">Settings</string>
     <string name="general_settings">General settings</string>
+
+    <!-- Change locale -->
+    <string name="change_language_title">Language: Application language</string>
+    <string name="change_language_desc">The application should be restarted to be applied selected language.</string>
+    <string-array name="language_labels">
+        <item>English</item>
+        <item>Romanian</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>en</item>
+        <item>ro</item>
+    </string-array>
+
     <string name="enable_locking_screen_title">Enable keep screen locking service</string>
     <string name="enable_locking_screen_desc">Check this option to enable the service needed to keep screen locking.</string>
     <string name="reason_admin_privileges">Admin privileges are necessary to lock the device.</string>
@@ -63,7 +76,7 @@
 
     <!-- Permission sections -->
     <string name="request_permissions_title">Request required application permission.</string>
-    <string name="request_permissions_desc">Touch this option to request for required application permissions: PROCESS OUTGOING CALLS and READ PHONE STATE (used to detect when an outgoing and incoming call are made), MODIFY AUDIO SETTINGS is used to check if an headset or a bluetooth is connected, RECEIVE BOOT COMPLETED (used to detect when booting process is finished).</string>
+    <string name="request_permissions_desc">Touch this option to request for required application permissions: PROCESS OUTGOING CALLS and READ PHONE STATE (used to detect when an outgoing and incoming call are made), MODIFY AUDIO SETTINGS (used to check if an headset or a bluetooth is connected), RECEIVE BOOT COMPLETED (used to detect when booting process is finished).</string>
     <string name="request_permissions_confirmation">Do you want to request for required application permissions?</string>
     <string name="request_permissions_ok">All required permissions are granted!</string>
 
@@ -100,7 +113,7 @@
     <string name="donate_title">Donate</string>
     <string name="donate_desc">Please make a donation if you appreciate this application.</string>
     <string name="donate_confirmation">If you appreciate this application, please do a donation buying Keep Screen Lock PRO!\nPressing YES button, you will be sent to Keep Screen Lock PRO from Google Play Store.\nThank you for using this application!</string>
-    <string name="donate_url"><Data><![CDATA[https://play.google.com/store/apps/details?id=ro.ciubex.keepscreenlockpro]]></Data></string>
+    <string name="donate_url" translatable="false"><Data><![CDATA[https://play.google.com/store/apps/details?id=ro.ciubex.keepscreenlockpro]]></Data></string>
     <string name="thank_you_title">Thank you for donation!</string>
     <string name="thank_you_desc">Thank you for the appreciation of my work, buying pro application.</string>
 
