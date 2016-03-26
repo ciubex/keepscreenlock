@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Keep Screen Lock</string>
+    <string name="app_name" translatable="false">Keep Screen Lock</string>
     <string name="startup_message">Due to hardware and software diversity, it is not guarantee that this application will work on your device.\nPlease use it with caution!\nThank you!</string>
 
     <!-- Common strings -->
@@ -22,7 +22,7 @@
         <item>English</item>
         <item>Romanian</item>
     </string-array>
-    <string-array name="language_values">
+    <string-array name="language_values" translatable="false">
         <item>en</item>
         <item>ro</item>
     </string-array>

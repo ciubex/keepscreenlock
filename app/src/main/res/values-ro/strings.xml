@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Keep Screen Lock</string>
     <string name="build_version_desc">1</string>
     <string name="about_section">Despre</string>
     <string name="app_description">Am realizat aceasta aplicatie pentru a evita lansarea accidentala de aplicatii si realizarea de apeluri cat timp telefonul este blocat, spre exemplu in buzunare.\nDin pacate nu pot garanta ca aplicatia realizeaza aceasta cu succes, insa folosind aceasta aplicatie am redus numarul cazurilor cand telefonul a fost activat accidental in buzunar.\n\nFi foarte atent la ce setari faci si experimenteaza-le pe cat posibil pentru a ajunge la o varianta optima!</string>
