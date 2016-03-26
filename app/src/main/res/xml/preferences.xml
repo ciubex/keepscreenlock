@@ -10,7 +10,7 @@
             android:key="languageCode"
             android:summary="@string/change_language_desc"
             android:title="@string/change_language_title"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="enableKeepScreenLockService"
             android:summary="@string/enable_locking_screen_desc"
@@ -29,7 +29,7 @@
             android:persistent="false"
             android:summary="@string/proximity_sensor_state_desc"
             android:title="@string/proximity_sensor_state_title"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:dependency="enableKeepScreenLockService"
             android:key="enableLightSensorListener"
@@ -44,13 +44,13 @@
             android:title="@string/limit_light_sensor_value_title"
             ciubex:maxValue="120000"
             ciubex:minValue="0"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:dependency="enableKeepScreenLockService"
             android:key="enablePhoneListener"
             android:summary="@string/enable_phone_listener_desc"
             android:title="@string/enable_phone_listener_title"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:dependency="enablePhoneListener"
             android:key="enableWhenHeadset"
@@ -58,13 +58,13 @@
             android:title="@string/check_only_when_headset_title"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/notification_settings">
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:dependency="enableKeepScreenLockService"
             android:key="notificationEnabled"
             android:summary="@string/notification_enabled_desc"
             android:title="@string/notification_enabled_title"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:dependency="notificationEnabled"
             android:key="notificationAlwaysDismissible"

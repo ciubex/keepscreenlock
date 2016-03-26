@@ -141,6 +141,8 @@ public class MainApplication extends Application {
 
 	private ScreenLockShortcutUpdateListener mShortcutUpdateListener;
 
+	public static final int LOCK_LOGS_COUNT_MAX = 100;
+
 	public static final String KEY_LANGUAGE_CODE = "languageCode";
 	private static final String KEY_HAVE_PERMISSIONS_ASKED = "havePermissionsAsked";
 	public static final String PERMISSION_FOR_OUTGOING_CALLS = "android.permission.PROCESS_OUTGOING_CALLS";
@@ -1010,9 +1012,17 @@ public class MainApplication extends Application {
 	 * Save the current timestamp to record when the device was locked.
 	 */
 	private void recordToKeepScreenLockLogs() {
-		String value = getKeepScreenLockLogs();
-		value += (value.length() == 0 ? "" : ",") + System.currentTimeMillis();
-		saveStringValue(KEY_KEEP_SCREEN_LOCK_LOGS, value);
+		String saved = getKeepScreenLockLogs();
+		String[] values = saved.split(",");
+		StringBuilder sb = new StringBuilder(String.valueOf(System.currentTimeMillis()));
+		if (values.length > 0) {
+			int k = 0;
+			while (k < (LOCK_LOGS_COUNT_MAX - 1) && k < values.length) {
+				sb.append(',');
+				sb.append(values[k++]);
+			}
+		}
+		saveStringValue(KEY_KEEP_SCREEN_LOCK_LOGS, sb.toString());
 	}
 
 	/**

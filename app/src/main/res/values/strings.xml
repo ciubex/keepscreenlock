@@ -89,6 +89,7 @@
     <string name="locked_screen_log_format_title">Log date time format</string>
     <string name="locked_screen_log_format_desc">Define date time for list of screen lock history events.</string>
     <string name="locked_screen_log_title">Screen lock history</string>
+    <string name="locked_screen_log_count">Last %d records for lock events:</string>
     <string name="locked_screen_log_clear">Clear list</string>
 
     <!-- Device admin messages -->

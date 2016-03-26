@@ -51,6 +51,7 @@
     <string name="locked_screen_log_format_desc">Defineste formatul pentru data si ora afisata in lista contorului de ecrane blocate.</string>
     <string name="locked_screen_log_format_title">Formatul pentru data si timp</string>
     <string name="locked_screen_log_title">Istoricul ecranelor blocate</string>
+    <string name="locked_screen_log_count">Ultimele %d inregistrati:</string>
     <string name="no">Nu</string>
     <string name="notification_dismiss_always_desc">Seteaza ca notificarile sa fie intotdeauna indepartabile, in mod normal acestea nu sunt indepartabile cat timp ecranul e blocat, dar sunt indepartabile in timpul apelurilor telefonice.</string>
     <string name="notification_dismiss_always_title">Perminte notificari indepartabile</string>
