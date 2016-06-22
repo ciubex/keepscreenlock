@@ -11,10 +11,6 @@
         <item>Engleza</item>
         <item>Romana</item>
     </string-array>
-    <string-array name="language_values">
-        <item>en</item>
-        <item>ro</item>
-    </string-array>
     <string name="check_only_when_headset_desc">Activati blocarea dispozitivului doar cand sunt prezente dispozitive maini libere (casti sau bluetooth).</string>
     <string name="check_only_when_headset_title">Numai pentru casti sau Bluetooth</string>
     <string name="close">Inchide</string>
@@ -34,6 +30,8 @@
     <string name="enable_phone_listener_desc">Ecranul poate fi blocat prin monitorizarea apelurilor telefonice. Aceasta functie poate fi de ajutor cand sunt folosite dispozitve tip "maini libere" pentru realizarea si raspunderea la apelurile telefonice.</string>
     <string name="enable_phone_listener_title">Monitorizeaza apelurile telefonice</string>
     <string name="general_settings">Setari generale</string>
+    <string name="keep_screen_off_incoming_call_desc">Ecranul va ramane aprins cand veti primi apeluri si daca aceasta optiune nu este activata.</string>
+    <string name="keep_screen_off_incoming_call_title">Pastreaza ecranul inchis cand sunt primite apeluri.</string>
     <string name="license_desc">Detalii legate de licentierea Open Source</string>
     <string name="license_title">Licenta Open Source</string>
     <string name="limit_light_sensor_value_desc">Se poate considera ca telefonul este intr-un buzunar daca valorile senzorului de lumina este intre 0 si %.2f.\nDe retinut, uneori aceste valori se pot inregistra intr-un mediu fara lumina, precum noaptea.</string>

@@ -21,6 +21,7 @@ package ro.ciubex.keepscreenlock.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.telephony.TelephonyManager;
 
 import ro.ciubex.keepscreenlock.MainApplication;
 
@@ -80,7 +81,10 @@ public class ScreenActionsReceiver extends BroadcastReceiver {
 		if (application.isScreenLocked()) { // screen is marked as locked.
 			if (application.isPhoneActive() &&
 					PhoneCallReceiver.PHONE_CALL_ACTION.equals(application.getLastAction())) { // check for calls
-				if (application.isEnableWhenHeadset()) { // check the headset
+				if (application.isKeepScreenOffIncomingCall() &&
+						TelephonyManager.CALL_STATE_RINGING == application.getLastPhoneState()) {
+					application.registerListeners();
+				} else if (application.isEnableWhenHeadset()) { // check the headset
 					if (application.isHeadsetConnected()) {
 						application.registerListeners();
 					} else {

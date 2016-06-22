@@ -43,6 +43,7 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -99,6 +100,7 @@ public class MainApplication extends Application {
 	private static final String FIRST_TIME = "firstTime";
 	public static final String KEY_ENABLE_KEEP_SCREEN_LOCK_SERVICE = "enableKeepScreenLockService";
 	public static final String KEY_ENABLE_PHONE_LISTENER = "enablePhoneListener";
+	public static final String KEY_KEEP_SCREEN_OFF_INCOMING_CALL = "keepScreenOffIncomingCall";
 	public static final String KEY_ENABLE_LIGHT_SENSOR_LISTENER = "enableLightSensorListener";
 	public static final String KEY_LIMIT_LIGHT_SENSOR_VALUE = "limitLightSensorValue";
 	public static final String KEY_LOCK_SCREEN_DELAY = "lockScreenDelay";
@@ -106,6 +108,7 @@ public class MainApplication extends Application {
 	public static final String KEY_KEEP_SCREEN_LOCK_LOGS = "keepScreenLockLogs";
 	public static final String KEY_SCREEN_LOCK_LOGS_DATETIMEFORMAT = "screenLockLogsDateTimeFormat";
 	public static final String KEY_LAST_ACTION = "lastAction";
+	public static final String KEY_LAST_PHONE_STATE = "lastPhoneState";
 	private static final String KEY_SCREEN_LOCKED_FLAG = "screenLockedFlag";
 	private static final String KEY_LAST_PROXIMITY_VALUE = "lastProximityValue";
 	private static final String KEY_LAST_LIGHT_VALUE = "lastLightValue";
@@ -514,6 +517,15 @@ public class MainApplication extends Application {
 	}
 
 	/**
+	 * Check if the screen should remain off for incoming calls.
+	 *
+	 * @return True if this option is enabled.
+	 */
+	public boolean isKeepScreenOffIncomingCall() {
+		return mSharedPreferences.getBoolean(KEY_KEEP_SCREEN_OFF_INCOMING_CALL, false);
+	}
+
+	/**
 	 * Check if the light sensor listener is enabled.
 	 *
 	 * @return True if the light sensor listener is enabled.
@@ -615,6 +627,22 @@ public class MainApplication extends Application {
 	 */
 	public void setLastAction(String action) {
 		saveStringValue(KEY_LAST_ACTION, action);
+	}
+
+	/**
+	 * Save last phone state.
+	 * @param lastPhoneState The last phone state to be stored.
+     */
+	public void setLastPhoneState(int lastPhoneState) {
+		saveIntegerValue(KEY_LAST_PHONE_STATE, lastPhoneState);
+	}
+
+	/**
+	 * Get last phone state.
+	 * @return The last phone state.
+     */
+	public int getLastPhoneState() {
+		return mSharedPreferences.getInt(KEY_LAST_PHONE_STATE, TelephonyManager.CALL_STATE_IDLE);
 	}
 
 	/**

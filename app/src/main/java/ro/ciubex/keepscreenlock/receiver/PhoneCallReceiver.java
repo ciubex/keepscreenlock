@@ -80,6 +80,7 @@ public class PhoneCallReceiver extends BroadcastReceiver {
 			application.logD(TAG, "Phone call state: " + callStateId + " last call state: " + mLastCallStateId);
 			application.setPhoneActive(TelephonyManager.CALL_STATE_IDLE != callStateId);
 			application.setLastAction(PHONE_CALL_ACTION);
+			application.setLastPhoneState(callStateId);
 			if (TelephonyManager.CALL_STATE_IDLE == callStateId) {
 				if (application.isScreenLocked()) {
 					application.setScreenLockedFlag(true, false);

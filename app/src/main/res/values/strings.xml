@@ -50,6 +50,8 @@
 
     <string name="enable_phone_listener_title">Check to monitor the calls too.</string>
     <string name="enable_phone_listener_desc">By monitoring the calls the screen can be locked too. This can be usefully when are used bluetooth devices to make and answer to calls.</string>
+    <string name="keep_screen_off_incoming_call_title">Keep screen off while incoming call</string>
+    <string name="keep_screen_off_incoming_call_desc">For incoming calls the screen lock service will not be active if this option is not enabled.</string>
     <string name="check_only_when_headset_title">Only for headphone or bluetooth</string>
     <string name="check_only_when_headset_desc">Enable locking back service only when an headphone or a bluetooth is connected to the device.</string>
 
@@ -58,8 +60,8 @@
     <string name="notification_text">Touch to Lock your Screen</string>
     <string name="notification_enabled_title">Enable notification</string>
     <string name="notification_enabled_desc">Check the option to enable the screen lock notification when the screen is locked, this will allow the screen to be turned off when the screen is locked (prior unlocking the screen).</string>
-    <string name="notification_dismiss_always_title">Set notification dismissable always</string>
-    <string name="notification_dismiss_always_desc">Set the notification to be always dismissable, by default is sticky on locked screen and can be dismissable during calls.</string>
+    <string name="notification_dismiss_always_title">Set notification dismissible always</string>
+    <string name="notification_dismiss_always_desc">Set the notification to be always dismissible, by default is sticky on locked screen and can be dismissible during calls.</string>
     <string name="notification_toggle_title">Hide notification</string>
     <string name="notification_toggle_desc">Touch this option to hide the notification if the notification remain on the status bar.</string>
 
