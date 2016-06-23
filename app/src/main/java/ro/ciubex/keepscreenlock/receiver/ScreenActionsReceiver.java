@@ -81,16 +81,16 @@ public class ScreenActionsReceiver extends BroadcastReceiver {
 		if (application.isScreenLocked()) { // screen is marked as locked.
 			if (application.isPhoneActive() &&
 					PhoneCallReceiver.PHONE_CALL_ACTION.equals(application.getLastAction())) { // check for calls
-				if (application.isKeepScreenOffIncomingCall() &&
-						TelephonyManager.CALL_STATE_RINGING == application.getLastPhoneState()) {
-					application.registerListeners();
-				} else if (application.isEnableWhenHeadset()) { // check the headset
+				if (application.isEnableWhenHeadset()) { // check the headset
 					if (application.isHeadsetConnected()) {
 						application.registerListeners();
 					} else {
 						application.hideLockScreenNotification();
 					}
-				} else { // not checking for headset or bluetooth state
+				} else if (application.isKeepScreenOffIncomingCall() &&
+						TelephonyManager.CALL_STATE_RINGING == application.getLastPhoneState()) {
+					application.registerListeners();
+				} else  { // not checking anything
 					application.registerListeners();
 				}
 			} else { // no phone call was made

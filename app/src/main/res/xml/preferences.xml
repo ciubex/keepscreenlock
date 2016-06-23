@@ -53,15 +53,15 @@
         <SwitchPreference
             android:defaultValue="false"
             android:dependency="enablePhoneListener"
-            android:key="keepScreenOffIncomingCall"
-            android:summary="@string/keep_screen_off_incoming_call_desc"
-            android:title="@string/keep_screen_off_incoming_call_title"/>
-        <SwitchPreference
-            android:defaultValue="false"
-            android:dependency="enablePhoneListener"
             android:key="enableWhenHeadset"
             android:summary="@string/check_only_when_headset_desc"
             android:title="@string/check_only_when_headset_title"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="enablePhoneListener"
+            android:key="keepScreenOffIncomingCall"
+            android:summary="@string/keep_screen_off_incoming_call_desc"
+            android:title="@string/keep_screen_off_incoming_call_title"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/notification_settings">
         <SwitchPreference
