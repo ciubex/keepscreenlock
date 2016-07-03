@@ -20,6 +20,8 @@ package ro.ciubex.keepscreenlock.activity;
 
 import android.app.Activity;
 import android.content.res.AssetManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -44,6 +46,7 @@ public class InfoActivity extends Activity {
 	public static final String FILE_NAME = "file_name";
 	public static final String MESSAGE = "message";
 	public static final String HTML_MESSAGE = "html_message";
+	private MainApplication mApplication;
 	private TextView mInfoTextView;
 	private String mBufferedText;
 	private Button mOkButton;
@@ -54,10 +57,22 @@ public class InfoActivity extends Activity {
 	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		mApplication = (MainApplication) getApplication();
+		applyApplicationLocale();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.info_layout);
 		checkBundle();
 		initControls();
+	}
+
+	/**
+	 * Apply application locale.
+	 */
+	private void applyApplicationLocale() {
+		Resources resources = getBaseContext().getResources();
+		Configuration config = resources.getConfiguration();
+		config.locale = mApplication.getLocale();
+		resources.updateConfiguration(config, resources.getDisplayMetrics());
 	}
 
 	/**
@@ -74,7 +89,7 @@ public class InfoActivity extends Activity {
 			}
 			if (b.containsKey(MESSAGE)) {
 				resId = b.getInt(MESSAGE);
-				mBufferedText = MainApplication.getAppContext().getString(resId);
+				mBufferedText = mApplication.getApplicationContext().getString(resId);
 			} else if (b.containsKey(FILE_NAME)) {
 				bundleValue = b.getString(FILE_NAME);
 				mBufferedText = getStreamText(bundleValue);

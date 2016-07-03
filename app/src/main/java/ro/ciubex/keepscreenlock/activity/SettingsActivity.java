@@ -26,6 +26,8 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -121,15 +123,26 @@ public class SettingsActivity extends PreferenceActivity implements
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mApplication = (MainApplication) getApplication();
+        applyApplicationLocale();
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
-        mApplication = (MainApplication) getApplication();
         mProximityListener = new ProximityListener(mApplication, this);
         mLightSensorListener = new LightSensorListener(mApplication, this);
         initPreferences();
         initCommands();
         initPreferencesByPermissions();
         checkProVersion();
+    }
+
+    /**
+     * Apply application locale.
+     */
+    private void applyApplicationLocale() {
+        Resources resources = getBaseContext().getResources();
+        Configuration config = resources.getConfiguration();
+        config.locale = mApplication.getLocale();
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
     }
 
     /**
@@ -344,10 +357,10 @@ public class SettingsActivity extends PreferenceActivity implements
     private void prepareSummaries() {
         prepareLockScreenDelaySummary();
         mEnableKeepScreenLockService.setChecked(mApplication.isEnabledKeepScreenLockService());
-        mKeepScreenLockCounter.setTitle(MainApplication.getAppContext().getString(
+        mKeepScreenLockCounter.setTitle(mApplication.getApplicationContext().getString(
                 R.string.locked_screen_count_title,
                 mApplication.getKeepScreenLockCounter()));
-        mLimitLightSensorValue.setSummary(MainApplication.getAppContext().getString(
+        mLimitLightSensorValue.setSummary(mApplication.getApplicationContext().getString(
                 R.string.limit_light_sensor_value_desc,
                 mApplication.getLimitLightSensorValue()));
         mBuildVersion.setSummary(mApplication.getVersionName());
@@ -368,7 +381,7 @@ public class SettingsActivity extends PreferenceActivity implements
             stringId = R.string.lock_screen_delay_desc_sec;
             delay = delay / 1000;
         }
-        mLockScreenDelay.setSummary(MainApplication.getAppContext().getString(stringId, delay));
+        mLockScreenDelay.setSummary(mApplication.getApplicationContext().getString(stringId, delay));
     }
 
     /**
@@ -377,12 +390,12 @@ public class SettingsActivity extends PreferenceActivity implements
     private void prepareProximitySensorListenerSummary() {
         String title, summary;
         if (mLastProximityValue < MainApplication.PROXIMITY_FAR_VALUE) {
-            title = MainApplication.getAppContext().getString(R.string.proximity_sensor_state_active);
+            title = mApplication.getApplicationContext().getString(R.string.proximity_sensor_state_active);
         } else {
-            title = MainApplication.getAppContext().getString(R.string.proximity_sensor_state_inactive);
+            title = mApplication.getApplicationContext().getString(R.string.proximity_sensor_state_inactive);
         }
-        title = MainApplication.getAppContext().getString(R.string.proximity_sensor_state_title, title);
-        summary = MainApplication.getAppContext().getString(R.string.proximity_sensor_state_desc, mLastProximityValue);
+        title = mApplication.getApplicationContext().getString(R.string.proximity_sensor_state_title, title);
+        summary = mApplication.getApplicationContext().getString(R.string.proximity_sensor_state_desc, mLastProximityValue);
         mProximitySensorState.setTitle(title);
         mProximitySensorState.setSummary(summary);
     }
@@ -393,11 +406,11 @@ public class SettingsActivity extends PreferenceActivity implements
     private void prepareLightSensorListenerSummary() {
         String summary;
         if (mLastLightValue >= 0) {
-            summary = MainApplication.getAppContext().getString(
+            summary = mApplication.getApplicationContext().getString(
                     R.string.enable_light_sensor_listener_desc,
                     mLastLightValue);
         } else {
-            summary = MainApplication.getAppContext().getString(
+            summary = mApplication.getApplicationContext().getString(
                     R.string.enable_light_sensor_listener_desc_no_value);
         }
         mEnableLightSensorListener.setSummary(summary);
@@ -441,11 +454,11 @@ public class SettingsActivity extends PreferenceActivity implements
      * Restart this activity.
      */
     private void restartActivity() {
+        Intent intent = getIntent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         mApplication.initLocale();
-        Intent i = MainApplication.getAppContext().getPackageManager()
-                .getLaunchIntentForPackage(MainApplication.getAppContext().getPackageName());
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
+        finish();
+        startActivity(intent);
     }
 
     /**
@@ -457,7 +470,7 @@ public class SettingsActivity extends PreferenceActivity implements
             Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
             intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, mApplication.getComponentName());
             intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-                    MainApplication.getAppContext().getString(R.string.reason_admin_privileges));
+                    mApplication.getApplicationContext().getString(R.string.reason_admin_privileges));
             startActivityForResult(intent, RESULT_ENABLE);
         }
     }
@@ -519,7 +532,7 @@ public class SettingsActivity extends PreferenceActivity implements
      * @return The screen lock shortcut intent.
      */
     private Intent getActivityIntent() {
-        Intent activityIntent = new Intent(MainApplication.getAppContext(), ScreenLockActivity.class);
+        Intent activityIntent = new Intent(mApplication.getApplicationContext(), ScreenLockActivity.class);
         activityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         activityIntent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
@@ -539,7 +552,7 @@ public class SettingsActivity extends PreferenceActivity implements
         shortcutIntent.setAction(action);
         shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, getActivityIntent());
         shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME,
-                MainApplication.getAppContext().getString(R.string.screen_lock_shortcut_name));
+                mApplication.getApplicationContext().getString(R.string.screen_lock_shortcut_name));
         shortcutIntent.putExtra("duplicate", false);
         if (create) {
             shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
@@ -547,7 +560,7 @@ public class SettingsActivity extends PreferenceActivity implements
                             getApplicationContext(),
                             R.mipmap.ic_launcher_red));
         }
-        MainApplication.getAppContext().sendBroadcast(shortcutIntent);
+        mApplication.getApplicationContext().sendBroadcast(shortcutIntent);
     }
 
     /**
@@ -603,7 +616,7 @@ public class SettingsActivity extends PreferenceActivity implements
                 mHistoryEventsItems = new ArrayAdapter<>(this,
                         R.layout.list_view_row_item);
                 mHistoryEventsItems.add(
-                        MainApplication.getAppContext().
+                        mApplication.getApplicationContext().
                                 getString(R.string.locked_screen_log_count, len));
                 for (i = 0; i < len; i++) {
                     mHistoryEventsItems.add(String.valueOf(k++) + ". " +
@@ -691,7 +704,7 @@ public class SettingsActivity extends PreferenceActivity implements
             alertDialog.setAdapter(adapter, null);
         } else {
             if (messageContainLink) {
-                String message = MainApplication.getAppContext().getString(messageId);
+                String message = mApplication.getApplicationContext().getString(messageId);
                 ScrollView scrollView = new ScrollView(this);
                 SpannableString spanText = new SpannableString(message);
                 Linkify.addLinks(spanText, Linkify.ALL);
@@ -746,7 +759,7 @@ public class SettingsActivity extends PreferenceActivity implements
         } else if (confirmationId == ID_CONFIRMATION_LOCKED_SCREEN_COUNTER) {
             mApplication.increaseKeepScreenLockCounter(-1);
         } else if (confirmationId == ID_CONFIRMATION_DEBUG_REPORT) {
-            confirmedSendReport(MainApplication.getAppContext().getString(R.string.send_debug_email_title));
+            confirmedSendReport(mApplication.getApplicationContext().getString(R.string.send_debug_email_title));
         } else if (confirmationId == ID_CONFIRMATION_REQUEST_PERMISSIONS) {
             String[] permissions = mApplication.getNotGrantedPermissions();
             if (Utilities.isEmpty(permissions)) {
@@ -780,7 +793,7 @@ public class SettingsActivity extends PreferenceActivity implements
      * Access the browser to open the donation page.
      */
     private void confirmedDonationPage() {
-        String url = MainApplication.getAppContext().getString(R.string.donate_url);
+        String url = mApplication.getApplicationContext().getString(R.string.donate_url);
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         try {
             startActivity(i);
@@ -795,8 +808,8 @@ public class SettingsActivity extends PreferenceActivity implements
      */
     private void confirmedSendReport(String emailTitle) {
         mApplication.showProgressDialog(this, this,
-                MainApplication.getAppContext().getString(R.string.send_debug_title), 0);
-        String message = MainApplication.getAppContext().getString(R.string.report_body);
+                mApplication.getApplicationContext().getString(R.string.send_debug_title), 0);
+        String message = mApplication.getApplicationContext().getString(R.string.report_body);
         File logsFolder = mApplication.getLogsFolder();
         File archive = getLogArchive(logsFolder);
         String[] TO = {"ciubex@yahoo.com"};
@@ -820,7 +833,7 @@ public class SettingsActivity extends PreferenceActivity implements
         mApplication.hideProgressDialog();
         try {
             startActivityForResult(Intent.createChooser(emailIntent,
-                    MainApplication.getAppContext().getString(R.string.send_report)), REQUEST_SEND_REPORT);
+                    mApplication.getApplicationContext().getString(R.string.send_report)), REQUEST_SEND_REPORT);
         } catch (ActivityNotFoundException ex) {
             mApplication.logE(TAG,
                     "confirmedSendReport Exception: " + ex.getMessage(), ex);

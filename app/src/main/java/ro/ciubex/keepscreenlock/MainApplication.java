@@ -77,7 +77,6 @@ import ro.ciubex.keepscreenlock.util.Utilities;
  */
 public class MainApplication extends Application {
 	private static final String TAG = MainApplication.class.getName();
-	private static Context mContext;
 	private Locale mLocale;
 	private SharedPreferences mSharedPreferences;
 	private static int mSdkInt = 8;
@@ -196,7 +195,6 @@ public class MainApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		MainApplication.mContext = getApplicationContext();
 		MainApplication.isEmulator = String.valueOf(Build.PRODUCT).startsWith("sdk");
 		mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 		mDeviceManger = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
@@ -210,23 +208,11 @@ public class MainApplication extends Application {
 	}
 
 	/**
-	 * Obtain the application context.
-	 *
-	 * @return The application context.
-	 */
-	public static Context getAppContext() {
-		return mContext;
-	}
-
-	/**
 	 * Initialize the application locale.
 	 */
 	public void initLocale() {
 		mLocale = getLocaleSharedPreferences();
 		Locale.setDefault(mLocale);
-		android.content.res.Configuration config = new android.content.res.Configuration();
-		config.locale = mLocale;
-		MainApplication.mContext.getResources().updateConfiguration(config, MainApplication.mContext.getResources().getDisplayMetrics());
 	}
 
 	/**
@@ -1057,7 +1043,7 @@ public class MainApplication extends Application {
 	 * Validate the screen lock logs DateTimeFormat.
 	 */
 	public void checkScreenLockLogsDateTimeFormat() {
-		String defaultFormatPattern = MainApplication.getAppContext().
+		String defaultFormatPattern = getApplicationContext().
 				getString(R.string.locked_screen_log_format);
 		String formatPattern = mSharedPreferences.getString(KEY_SCREEN_LOCK_LOGS_DATETIMEFORMAT,
 				defaultFormatPattern);
@@ -1105,7 +1091,7 @@ public class MainApplication extends Application {
 		mProgressDialog.setMessage(message);
 		mProgressDialog.setCancelable(false);
 		mProgressDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
-				MainApplication.getAppContext().getString(R.string.cancel),
+				getApplicationContext().getString(R.string.cancel),
 				new DialogInterface.OnClickListener() {
 
 					@Override

@@ -230,7 +230,7 @@ public class KeepScreenLockService extends Service {
 			theFilter.addAction(Intent.ACTION_SCREEN_ON);
 			theFilter.addAction(Intent.ACTION_SCREEN_OFF);
 			theFilter.addAction(Intent.ACTION_USER_PRESENT);
-			MainApplication.getAppContext().registerReceiver(mScreenActionsReceiver, theFilter);
+			mApplication.getApplicationContext().registerReceiver(mScreenActionsReceiver, theFilter);
 			mApplication.logD(TAG, "Register the ScreenActionsReceiver.");
 		}
 	}
@@ -256,7 +256,7 @@ public class KeepScreenLockService extends Service {
 			final IntentFilter theFilter = new IntentFilter();
 			theFilter.addAction(Intent.ACTION_NEW_OUTGOING_CALL);
 			theFilter.addAction(TelephonyManager.ACTION_PHONE_STATE_CHANGED);
-			MainApplication.getAppContext().registerReceiver(mPhoneCallReceiver, theFilter);
+			mApplication.getApplicationContext().registerReceiver(mPhoneCallReceiver, theFilter);
 			mApplication.logD(TAG, "Register the PhoneCallReceiver.");
 		}
 	}
@@ -280,11 +280,11 @@ public class KeepScreenLockService extends Service {
 			int apiLevel = Build.VERSION.SDK_INT;
 			if (apiLevel >= 7) {
 				try {
-					MainApplication.getAppContext().unregisterReceiver(receiver);
+					mApplication.getApplicationContext().unregisterReceiver(receiver);
 				} catch (IllegalArgumentException e) {
 				}
 			} else {
-				MainApplication.getAppContext().unregisterReceiver(receiver);
+				mApplication.getApplicationContext().unregisterReceiver(receiver);
 			}
 		}
 	}
