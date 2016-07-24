@@ -32,9 +32,9 @@
     <string name="reason_admin_privileges">Admin privileges are necessary to lock the device.</string>
 
     <string name="lock_screen_delay_title">Lock screen delay</string>
-    <string name="lock_screen_delay_desc_msec">Wait for %.0f milliseconds to lock the screen. (1 second = 1000 milliseconds/msec, minimum is 50 msec, maximum is 3 sec)</string>
-    <string name="lock_screen_delay_desc_1sec">Wait for %.0f second to lock the screen. (1 second = 1000 milliseconds/msec, minimum is 50 msec, maximum is 3 sec)</string>
-    <string name="lock_screen_delay_desc_sec">Wait for %.2f seconds to lock the screen. (1 second = 1000 milliseconds/msec, minimum is 50 msec, maximum is 3 sec)</string>
+    <string name="lock_screen_delay_desc_msec">Wait for %.0f milliseconds to lock the screen. (1 second = 1000 milliseconds/msec, minimum is 5 msec, maximum is 3 sec)</string>
+    <string name="lock_screen_delay_desc_1sec">Wait for %.0f second to lock the screen. (1 second = 1000 milliseconds/msec, minimum is 5 msec, maximum is 3 sec)</string>
+    <string name="lock_screen_delay_desc_sec">Wait for %.2f seconds to lock the screen. (1 second = 1000 milliseconds/msec, minimum is 5 msec, maximum is 3 sec)</string>
 
     <string name="proximity_sensor_state_title">Proximity sensor state: %s</string>
     <string name="proximity_sensor_state_desc">Move the your hand over the proximity sensor to check the sensor state.\nCurrent recorded value is: %.2f</string>

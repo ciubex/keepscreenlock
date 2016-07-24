@@ -35,9 +35,9 @@
 	<string name="license_title">Licenta Open Source</string>
 	<string name="limit_light_sensor_value_desc">Se poate considera ca telefonul este intr-un buzunar daca valorile senzorului de lumina este intre 0 si %.2f.\nDe retinut, uneori aceste valori se pot inregistra intr-un mediu fara lumina, precum noaptea.</string>
 	<string name="limit_light_sensor_value_title">Sensibilitatea senzorului de lumina</string>
-	<string name="lock_screen_delay_desc_1sec">Asteapta %.0f secunda pentru a bloca ecranul. (1 secunda = 1000 milisecunde/msec, valoare minima 50 msec, valoare maxima 3 sec)</string>
-	<string name="lock_screen_delay_desc_msec">Asteapta %.0f milisecunde pentru a bloca ecranul. (1 secunda = 1000 milisecunde/msec, valoare minima 50 msec, valoare maxima 3 sec)</string>
-	<string name="lock_screen_delay_desc_sec">Asteapta %.2f secunde pentru a bloca ecranul. (1 secunda = 1000 milisecunde/msec, valoare minima 50 msec, valoare maxima 3 sec)</string>
+	<string name="lock_screen_delay_desc_1sec">Asteapta %.0f secunda pentru a bloca ecranul. (1 secunda = 1000 milisecunde/msec, valoare minima 5 msec, valoare maxima 3 sec)</string>
+	<string name="lock_screen_delay_desc_msec">Asteapta %.0f milisecunde pentru a bloca ecranul. (1 secunda = 1000 milisecunde/msec, valoare minima 5 msec, valoare maxima 3 sec)</string>
+	<string name="lock_screen_delay_desc_sec">Asteapta %.2f secunde pentru a bloca ecranul. (1 secunda = 1000 milisecunde/msec, valoare minima 5 msec, valoare maxima 3 sec)</string>
 	<string name="lock_screen_delay_title">Intarzire pentru blocarea ecranului</string>
 	<string name="locked_screen_count_0">Nu a fost inregistrat nici un eveniment.</string>
 	<string name="locked_screen_count_desc">Acest contor indica de cate ori a fost ecranul dispozitivului dumneavoastra blocat automat de aceasta aplicatie. Atinge aceasta optiune pentru a vedea istoricul momentelor in care a fost blocat automat ecranul si pentru resetarea contorului.</string>

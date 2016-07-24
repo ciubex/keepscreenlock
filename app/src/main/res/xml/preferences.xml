@@ -23,7 +23,7 @@
             android:summary="@string/lock_screen_delay_desc_msec"
             android:title="@string/lock_screen_delay_title"
             ciubex:maxValue="3000"
-            ciubex:minValue="50"/>
+            ciubex:minValue="5"/>
         <Preference
             android:key="proximitySensorState"
             android:persistent="false"

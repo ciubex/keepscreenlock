@@ -4,13 +4,6 @@ android {
     compileSdkVersion 23
     buildToolsVersion "22.0.1"
 
-    defaultConfig {
-        applicationId "ro.ciubex.keepscreenlock"
-        minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 11
-        versionName "1.1.4"
-    }
     buildTypes {
         release {
             minifyEnabled false
