@@ -49,11 +49,11 @@
     <string name="limit_light_sensor_value_desc">Consider to be inside a pocket if the light sensor values are between 0 and %.2f.\nNote, sometime could be confused with a dark environment too.</string>
 
     <string name="enable_phone_listener_title">Check to monitor the calls too.</string>
-    <string name="enable_phone_listener_desc">By monitoring the calls the screen can be locked too. This can be usefully when are used bluetooth devices to make and answer to calls.</string>
-    <string name="keep_screen_off_incoming_call_title">Keep screen off while incoming call</string>
-    <string name="keep_screen_off_incoming_call_desc">For incoming calls the screen lock service will not be active if this option is not enabled.</string>
+    <string name="enable_phone_listener_desc">By enabling this option, the application will monitor your phone state to lock your screen during calls too, incoming and outgoing. This can be usefully when are used bluetooth devices to make and answer to calls.</string>
+    <string name="keep_screen_off_incoming_call_title">Enable for incoming calls only</string>
+    <string name="keep_screen_off_incoming_call_desc">Check this option if you want to be screen locked for incoming calls only. For outgoing calls the screen will not be locked.</string>
     <string name="check_only_when_headset_title">Only for headphone or bluetooth</string>
-    <string name="check_only_when_headset_desc">Enable locking back service only when an headphone or a bluetooth is connected to the device.</string>
+    <string name="check_only_when_headset_desc">Monitor calls, but lock screen when an headphone or a bluetooth is connected to the device only.</string>
 
     <!-- Notifications -->
     <string name="notification_settings">Notification settings</string>
@@ -102,14 +102,14 @@
     <!-- About -->
     <string name="about_section">About</string>
     <string name="build_version_title">Build version</string>
-    <string name="build_version_desc">1</string>
+    <string name="build_version_desc" translatable="false">1</string>
     <string name="send_debug_title">Send debugging logs</string>
     <string name="send_debug_desc">Send an e-mail with debugging files</string>
     <string name="send_debug_confirmation">Do you want to send a debugging report?\nYour default e-mail application will send an e-mail with two files attached, please fill a short description of your issues if is necessary.\nThank you!</string>
-    <string name="send_debug_email_title">Debugging logs for Keep Screen Lock</string>
+    <string name="send_debug_email_title" translatable="false">Debugging logs for Keep Screen Lock</string>
     <string name="obtain_logs">Generate log file for report&#8230;</string>
     <string name="report_subject">Report for Keep Screen Lock</string>
-    <string name="report_body">Description: </string>
+    <string name="report_body" translatable="false">Description: (in English)</string>
     <string name="send_report">Send report&#8230;</string>
     <string name="license_title">Open source licenses</string>
     <string name="license_desc">License details for open source software</string>
