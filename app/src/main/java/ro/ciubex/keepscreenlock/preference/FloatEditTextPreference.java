@@ -1,7 +1,7 @@
 /**
  * This file is part of Keep Screen Lock application.
  *
- * Copyright (C) 2015 Claudiu Ciobotariu
+ * Copyright (C) 2016 Claudiu Ciobotariu
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -103,6 +103,11 @@ public class FloatEditTextPreference extends EditTextPreference {
 		String value = getEditText().getText().toString();
 		float result = Utilities.getFloat(value, mCurrentValue);
 		if (result < mMinValue || result > mMaxValue) {
+			if (mCurrentValue < mMinValue) {
+				mCurrentValue = mMinValue;
+			} else if (mCurrentValue > mMaxValue) {
+				mCurrentValue = mMaxValue;
+			}
 			getEditText().setText("" + mCurrentValue);
 		} else {
 			mCurrentValue = result;

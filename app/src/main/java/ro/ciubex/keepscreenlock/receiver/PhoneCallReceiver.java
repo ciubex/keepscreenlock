@@ -1,7 +1,7 @@
 /**
  * This file is part of Keep Screen Lock application.
  *
- * Copyright (C) 2015 Claudiu Ciobotariu
+ * Copyright (C) 2016 Claudiu Ciobotariu
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -82,7 +82,7 @@ public class PhoneCallReceiver extends BroadcastReceiver {
 			application.setLastAction(PHONE_CALL_ACTION);
 			application.setLastPhoneState(callStateId);
 			if (TelephonyManager.CALL_STATE_IDLE == callStateId) {
-				if (application.isScreenLocked()) {
+				if (application.isDeviceLocked()) {
 					application.setScreenLockedFlag(true, false);
 					application.callKeepScreenLockTask();
 				}

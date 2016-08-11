@@ -80,7 +80,7 @@ public class KeepScreenLockTask extends AsyncTask<Void, Void, Void> {
 	 */
 	private void checkScreenLockConditions() {
 		String lastAction = mApplication.getLastAction();
-		boolean lockScreen = mApplication.isScreenLocked();
+		boolean lockScreen = mApplication.isDeviceLocked();
 		mApplication.logD(TAG, "checkScreenLockConditions");
 		if (mApplication.isEnabledKeepScreenLockService() &&
 				Intent.ACTION_SCREEN_ON.equals(lastAction)) {

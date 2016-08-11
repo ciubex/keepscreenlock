@@ -1,7 +1,7 @@
 /**
  * This file is part of Keep Screen Lock application.
  *
- * Copyright (C) 2015 Claudiu Ciobotariu
+ * Copyright (C) 2016 Claudiu Ciobotariu
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -78,7 +78,7 @@ public class ScreenActionsReceiver extends BroadcastReceiver {
 	 * Checking when the screen is turned ON.
 	 */
 	private void handleScreenOnCase(MainApplication application) {
-		if (application.isScreenLocked()) { // screen is marked as locked.
+		if (application.isDeviceLocked()) { // screen is marked as locked.
 			if (application.isPhoneActive() &&
 					PhoneCallReceiver.PHONE_CALL_ACTION.equals(application.getLastAction())) { // check for calls
 				if (application.isEnableWhenHeadset()) { // check the headset
